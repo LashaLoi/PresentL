@@ -17,7 +17,7 @@ interface SlidesPageProps {
 
 const Slides: NextPage<SlidesPageProps> = ({ step }) => {
   const currentSlide = useSlide(step);
-  const ref = useRef<HTMLImageElement>(null);
+  const ref = useRef<HTMLDivElement>(null);
 
   const handleClick = useCallback(() => {
     if (ref.current?.requestFullscreen) {
@@ -35,20 +35,21 @@ const Slides: NextPage<SlidesPageProps> = ({ step }) => {
   return (
     <Layout>
       <AnimatePresence exitBeforeEnter>
-        {images.map(
-          (src, i) =>
-            i === currentSlide && (
-              <motion.img
-                ref={ref}
-                key={src}
-                src={src}
-                onDoubleClick={handleClick}
-                className="object-cover h-screen w-screen cursor-pointer"
-                alt={`slide ${i + 1}`}
-                {...fadeAnimation}
-              />
-            )
-        )}
+        <div ref={ref}>
+          {images.map(
+            (src, i) =>
+              i === currentSlide && (
+                <motion.img
+                  key={src}
+                  src={src}
+                  onDoubleClick={handleClick}
+                  className="object-cover h-screen w-screen cursor-pointer"
+                  alt={`slide ${i + 1}`}
+                  {...fadeAnimation}
+                />
+              )
+          )}
+        </div>
       </AnimatePresence>
       <div
         className="absolute text-white cursor-pointer right-5 bottom-5"

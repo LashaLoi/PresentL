@@ -16,7 +16,7 @@ const Layout: React.FC<LayoutProps> = ({ children, withHeader = false }) => (
 
     {withHeader && <Header />}
 
-    <main className="h-screen w-screen flex-1 flex flex-col items-center justify-center relative">
+    <main className="min-h-screen w-screen flex-1 flex flex-col items-center justify-center relative">
       {children}
     </main>
 
@@ -25,7 +25,7 @@ const Layout: React.FC<LayoutProps> = ({ children, withHeader = false }) => (
         href="https://t.me/SideswipeLoi"
         target="_blank"
         rel="noopener noreferrer"
-        className="flex items-center justify-center flex-grow text-gray-400 font-bold"
+        className="flex items-center justify-center flex-grow text-gray-500 font-bold"
       >
         Created by <span className="ml-1 text-blue-300"> @SideswipeLoi</span>
       </a>
